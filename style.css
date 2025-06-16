@@ -122,6 +122,14 @@ transform: translateY(-50%);
     width: 500px;
     height: 250px;
 }
+#selection div #player:hover {
+  background: #fff;
+  color: #4169e1;
+}
+#selection div .select:hover {
+  background: #fff;
+  color: #ff004d;
+}
 .select {
   background-color: #ff004d; 
   color: white;
@@ -221,8 +229,33 @@ transform: translateY(-50%);
     box-shadow: 0 0 15px #00f, 4px 4px 0 #000;
     border-color: #00f;
 }
-
 @media screen and (max-width: 1015px) {
+#scoreboard h1, .points{
+    font-size: 24px;
+    width: 100%;
+    display: flex;
+    margin: auto;
+    align-items: center;
+}
+.points div{
+    
+    background-color: #ff004d;
+    width: 500px;
+    height: 30px;
+    border: 1px solid white;
+}
+
+#gameboard button {
+    width: 100%;
+    height: 100px;;
+}
+#gameboard {
+    width: 100%;
+   
+    margin: 12px auto;
+  }
+}
+@media screen and (max-width: 748px) {
 
 #header h1{
     font-size: 20px;
@@ -292,6 +325,10 @@ transform: translateY(-50%);
     font-size: 1rem;
     
 }
+#continue {
+    padding: 10px 18px;
+    
+}
 #selection{
     height: 100%;
    
@@ -304,6 +341,31 @@ transform: translateY(-50%);
 .select {
   font-size: 0.8rem;
 }
+}
+/* Responsive adjustments for tablets */
+@media (max-width: 900px) {
+  #selection {
+    gap: 2rem;
+    min-height: 50vh;
+    padding: 1.5rem 0.5rem;
+  }
+  #selection div button {
+    font-size: 1rem;
+    padding: 0.6em 1.5em;
+  }
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 600px) {
+  #selection {
+    gap: 1.2rem;
+    min-height: 40vh;
+    padding: 1rem 0.2rem;
+  }
+  #selection div button {
+    font-size: 0.95rem;
+    padding: 0.5em 1em;
+  }
 }
 @keyframes blink {
             0% {
