@@ -4,6 +4,12 @@ let back = document.getElementById("back");
 let player = document.getElementById("player");
 let ai = document.getElementById("ai");
 
+//audio
+let bgMusic = new Audio('audio/battlesound.mp3');
+let winSound = new Audio('audio/win.mp3');
+let gameOverSound = new Audio('audio/game-over-voice.mp3');
+let loseSound = new Audio('audio/game-over-sound.mp3');
+
 
 let player2 = document.getElementById("player2");
 
@@ -59,6 +65,8 @@ start.addEventListener("click", () =>{
 });
 back.addEventListener("click", () => {
   back.style.display = "none";
+  bgMusic.pause();
+  bgMusic.currentTime = 0;
   gameboard.style.display = "none";
   selection.style.display = "flex";
   scoreboard.style.display = "none";
@@ -73,8 +81,13 @@ back.addEventListener("click", () => {
 });
 continueToNext.addEventListener("click", () => {
   if(continueToNext.textContent == "Rematch"){
+    loseSound.pause();
+    loseSound.currentTime = 0;
+    gameOverSound.pause();
+    gameOverSound.currentTime = 0;
+    battleSound();
     rematch();
-
+   
   } else{
     alertMessage.style.display = "none";
     gameboard.style.display = "grid";
@@ -84,6 +97,7 @@ continueToNext.addEventListener("click", () => {
 function vsPlayer(){
   resetAll();
       clearAllEventListeners();
+      battleSound();
 buttons.forEach((button, index) => {
   button.addEventListener("click", () => {
     const clickedCell = index;
@@ -103,6 +117,7 @@ buttons.forEach((button, index) => {
 function vsAI() {
     resetAll();
         clearAllEventListeners();
+        battleSound();
   buttons.forEach((button, index) => {
     button.addEventListener("click", () => {
       if (board[index] !== "") return;
@@ -235,6 +250,7 @@ function handleWinners() {
               round.textContent = "PLAYER 1 IS PRO";
               over.textContent = "Nice Game Player 2 Noob";
               continueToNext.textContent = "Rematch";
+              playWinSound();
              }
             resetGame();
             }, 700);
@@ -252,6 +268,7 @@ function handleWinners() {
                 round.textContent = "PLAYER 2 IS PRO";
               over.textContent = "Nice Game Player 1 Noob";
         continueToNext.textContent = "Rematch";
+        playWinSound();
              }
             resetGame();
             }, 700);
@@ -297,6 +314,7 @@ function handleWinnersVsAI() {
               round.textContent = "YOU WIN PRO!";
               over.textContent = "Nice Game!";
         continueToNext.textContent = "Rematch";
+        playWinSound();
         }
 
             resetGame();
@@ -316,6 +334,7 @@ function handleWinnersVsAI() {
               round.textContent = "YOU LOSE NOOB!";
               over.textContent = "Game over!.";
               continueToNext.textContent = "Rematch";
+              playLoseSound();
       } 
 
 
@@ -389,13 +408,37 @@ function rematch(){
     gameboard.style.display = "grid";
     resetAll();
     resetGame();
-
+    battleSound();
+   
     if (mode) {
       vsPlayer();
     } else{
         vsAI();
     }
   
+}
+function battleSound() {
+loseSound.pause();
+loseSound.currentTime = 0;
+gameOverSound.pause(); 
+gameOverSound.currentTime = 0;
+winSound.pause();
+winSound.currentTime = 0;
+bgMusic.loop = true;
+bgMusic.volume = 0.5; 
+bgMusic.play();
+}
+function playWinSound() {
+   bgMusic.pause();
+  bgMusic.currentTime = 0;
+  winSound.play();
+}
+
+function playLoseSound() {
+  bgMusic.pause();
+  bgMusic.currentTime = 0;
+  gameOverSound.play();
+  loseSound.play();
 }
 
 
