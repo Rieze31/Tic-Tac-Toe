@@ -221,9 +221,23 @@ transform: translateY(-50%);
     box-shadow: 0 0 15px #00f, 4px 4px 0 #000;
     border-color: #00f;
 }
-@media (max-width: 768px) {
 
+@media screen and (max-width: 1015px) {
 
+#header h1{
+    font-size: 20px;
+
+}
+#header  p {
+    font-size: 14px;
+
+}   
+#homepage h1{
+    font-size: 50px;
+}
+#start{
+    font-size: 14px;
+}
 #scoreboard h1, .points{
     font-size: 24px;
     width: 100%;
@@ -279,19 +293,16 @@ transform: translateY(-50%);
     
 }
 #selection{
-
     height: 100%;
+   
 }
+
 #selection div button{
-    width: 350px;
-    height: auto;
+    width: 250px;
+    height: 200px;
 }
 .select {
-
   font-size: 0.8rem;
-
-
-
 }
 }
 @keyframes blink {
